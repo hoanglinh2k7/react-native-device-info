@@ -46,3 +46,15 @@ DerivedData
 .idea/vcs.xml
 
 .idea/workspace.xml
+android/android.iml
+android/gradlew
+android/gradlew.bat
+android/local.properties
+android/.gradle/4.1/fileChanges/last-build.bin
+android/.gradle/4.1/fileHashes/fileHashes.bin
+android/.gradle/4.1/fileHashes/fileHashes.lock
+android/.idea/gradle.xml
+android/.idea/misc.xml
+android/.idea/modules.xml
+android/.idea/runConfigurations.xml
+android/.idea/workspace.xml
