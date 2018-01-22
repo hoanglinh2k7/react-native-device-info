@@ -101,12 +101,27 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
     p.resolve(ipAddress);
   }
 
+  @SuppressLint("HardwareIds")
   @ReactMethod
   public void getMacAddress(Promise p) {
     String macAddress = getWifiInfo().getMacAddress();
     p.resolve(macAddress);
   }
 
+
+  @SuppressLint("HardwareIds")
+  @ReactMethod
+  public void getPhoneNumber(Promise p) {
+    if (getCurrentActivity() != null &&
+        (getCurrentActivity().checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED ||
+            getCurrentActivity().checkCallingOrSelfPermission(Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED ||
+            getCurrentActivity().checkCallingOrSelfPermission("android.permission.READ_PHONE_NUMBERS") == PackageManager.PERMISSION_GRANTED)) {
+      TelephonyManager telMgr = (TelephonyManager) this.reactContext.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+      p.resolve(telMgr != null ? telMgr.getLine1Number() : "");
+    }
+  }
+
+  @SuppressLint("HardwareIds")
   @Override
   public @Nullable Map<String, Object> getConstants() {
     HashMap<String, Object> constants = new HashMap<String, Object>();
@@ -170,7 +185,7 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
             getCurrentActivity().checkCallingOrSelfPermission(Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED ||
             getCurrentActivity().checkCallingOrSelfPermission("android.permission.READ_PHONE_NUMBERS") == PackageManager.PERMISSION_GRANTED)) {
         TelephonyManager telMgr = (TelephonyManager) this.reactContext.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
-        constants.put("phoneNumber", telMgr.getLine1Number());
+        constants.put("phoneNumber", telMgr != null ? telMgr.getLine1Number() : "");
     }
     return constants;
   }
