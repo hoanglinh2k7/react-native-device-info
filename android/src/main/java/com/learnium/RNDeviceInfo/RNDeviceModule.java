@@ -128,7 +128,7 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
           p.resolve(String.valueOf(phone.getNationalNumber()));
         } catch (NumberParseException e) {
           e.printStackTrace();
-          p.resolve("");
+          p.resolve(telMgr.getLine1Number());
         }
       } else {
         p.resolve("");
