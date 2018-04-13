@@ -21,6 +21,7 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
@@ -169,13 +170,14 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
       e.printStackTrace();
     }
 
-    try {
-      if (Class.forName("com.google.android.gms.iid.InstanceID") != null) {
-        constants.put("instanceId", com.google.android.gms.iid.InstanceID.getInstance(this.reactContext).getId());
-      }
-    } catch (ClassNotFoundException e) {
-      constants.put("instanceId", "N/A: Add com.google.android.gms:play-services-gcm to your project.");
-    }
+//    try {
+//      if (Class.forName("com.google.android.gms.iid.InstanceID") != null) {
+//        constants.put("instanceId", FirebaseInstanceId.getInstance().getToken());
+//      }
+//    } catch (ClassNotFoundException e) {
+//      constants.put("instanceId", "N/A: Add com.google.android.gms:play-services-gcm to your project.");
+//    }
+    constants.put("instanceId", FirebaseInstanceId.getInstance().getId());
     constants.put("serialNumber", Build.SERIAL);
     constants.put("deviceName", deviceName);
     constants.put("systemName", "Android");

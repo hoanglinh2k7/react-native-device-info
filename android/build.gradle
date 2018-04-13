@@ -12,6 +12,7 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        multiDexEnabled true
     }
     lintOptions {
        warning 'InvalidPackage'
@@ -20,6 +21,7 @@ android {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile 'com.google.android.gms:play-services-gcm:+'
+    compile "com.google.android.gms:play-services-base:+"
+    compile "com.google.firebase:firebase-core:+"
     compile group: 'com.googlecode.libphonenumber', name: 'libphonenumber', version: '8.8.9'
 }
