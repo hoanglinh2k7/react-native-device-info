@@ -134,6 +134,8 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
       } else {
         p.resolve("");
       }
+    } else {
+      p.resolve("");
     }
   }
 
