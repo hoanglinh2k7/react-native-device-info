@@ -22,7 +22,7 @@ android {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-//    implementation "com.google.android.gms:play-services-base:15.0.1"
+    implementation "com.google.android.gms:play-services-base:16.0.1"
     implementation "com.google.firebase:firebase-core:16.0.1"
     implementation 'com.google.firebase:firebase-messaging:17.1.0'
     implementation group: 'com.googlecode.libphonenumber', name: 'libphonenumber', version: '8.8.9'
